@@ -1,0 +1,111 @@
+Sem acesso à URL (URLError); base carregada do arquivo local glass.data.
+==============================================================================
+BASE GLASS
+==============================================================================
+Instâncias: 214   Atributos de entrada: 9
+Distribuição das classes: {1: 70, 2: 76, 3: 17, 5: 13, 6: 9, 7: 29}
+Treinamento: 128 instâncias | Teste: 86 instâncias
+Distribuição das classes no teste: {1: 28, 2: 30, 3: 7, 5: 5, 6: 4, 7: 12}
+
+[Monolitico] Arvore de Decisao
+  Melhores hiperparâmetros (CV 5 folds no treino): {'criterion': 'gini', 'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 2}
+  Acurácia média na validação cruzada (treino): 67.26%
+  TAXA DE ACERTO NO TESTE (holdout 40%): 61.63%
+
+[Monolitico] KNN
+  Melhores hiperparâmetros (CV 5 folds no treino): {'clf__n_neighbors': 1, 'clf__p': 1}
+  Acurácia média na validação cruzada (treino): 68.74%
+  TAXA DE ACERTO NO TESTE (holdout 40%): 82.56%
+
+[Monolitico] KNN weighted
+  Melhores hiperparâmetros (CV 5 folds no treino): {'clf__n_neighbors': 5, 'clf__p': 1}
+  Acurácia média na validação cruzada (treino): 69.51%
+  TAXA DE ACERTO NO TESTE (holdout 40%): 75.58%
+
+[Monolitico] Naive Bayes
+  Melhores hiperparâmetros (CV 5 folds no treino): {'var_smoothing': 0.001}
+  Acurácia média na validação cruzada (treino): 49.11%
+  TAXA DE ACERTO NO TESTE (holdout 40%): 51.16%
+
+[Monolitico] MLP
+  Melhores hiperparâmetros (CV 5 folds no treino): {'clf__activation': 'tanh', 'clf__alpha': 0.01, 'clf__hidden_layer_sizes': (16,)}
+  Acurácia média na validação cruzada (treino): 68.71%
+  TAXA DE ACERTO NO TESTE (holdout 40%): 69.77%
+
+[Monolitico] SVM
+  Melhores hiperparâmetros (CV 5 folds no treino): {'clf__C': 1000, 'clf__gamma': 0.01, 'clf__kernel': 'rbf'}
+  Acurácia média na validação cruzada (treino): 70.28%
+  TAXA DE ACERTO NO TESTE (holdout 40%): 63.95%
+
+[Ensemble] Ensemble heterogeneo com voto majoritario (DT+KNNw+SVM+MLP)
+  TAXA DE ACERTO NO TESTE (holdout 40%): 72.09%
+
+[Ensemble] Ensemble heterogeneo com soma de probabilidades soft (DT+KNNw+SVM+MLP)
+  TAXA DE ACERTO NO TESTE (holdout 40%): 79.07%
+
+[Ensemble] Bagging (Arvores)
+  Melhores hiperparâmetros (CV 5 folds no treino): {'max_samples': 1.0, 'n_estimators': 100}
+  Acurácia média na validação cruzada (treino): 71.94%
+  TAXA DE ACERTO NO TESTE (holdout 40%): 81.40%
+
+[Ensemble] AdaBoost (Arvores)
+  Melhores hiperparâmetros (CV 5 folds no treino): {'learning_rate': 0.5, 'n_estimators': 50}
+  Acurácia média na validação cruzada (treino): 74.25%
+  TAXA DE ACERTO NO TESTE (holdout 40%): 79.07%
+
+[Ensemble] Random Forest
+  Melhores hiperparâmetros (CV 5 folds no treino): {'max_depth': None, 'max_features': 'sqrt', 'n_estimators': 500}
+  Acurácia média na validação cruzada (treino): 74.28%
+  TAXA DE ACERTO NO TESTE (holdout 40%): 80.23%
+
+==============================================================================
+TABELA DE RESULTADOS (Holdout 60/40)
+==============================================================================
+     grupo                                                          classificador  taxa_acerto_%
+Monolitico                                                      Arvore de Decisao          61.63
+Monolitico                                                                    KNN          82.56
+Monolitico                                                           KNN weighted          75.58
+Monolitico                                                            Naive Bayes          51.16
+Monolitico                                                                    MLP          69.77
+Monolitico                                                                    SVM          63.95
+  Ensemble            Ensemble heterogeneo com voto majoritario (DT+KNNw+SVM+MLP)          72.09
+  Ensemble Ensemble heterogeneo com soma de probabilidades soft (DT+KNNw+SVM+MLP)          79.07
+  Ensemble                                                      Bagging (Arvores)          81.40
+  Ensemble                                                     AdaBoost (Arvores)          79.07
+  Ensemble                                                          Random Forest          80.23
+
+==============================================================================
+MELHOR RESULTADO: KNN -> 82.56%
+Parâmetros: {'clf__n_neighbors': 1, 'clf__p': 1}
+==============================================================================
+Matriz de confusão (linhas = classe real, colunas = predita), classes 1 2 3 5 6 7:
+[[25  2  1  0  0  0]
+ [ 3 24  1  1  1  0]
+ [ 3  1  3  0  0  0]
+ [ 0  0  0  5  0  0]
+ [ 0  0  0  0  3  1]
+ [ 0  0  0  1  0 11]]
+              precision    recall  f1-score   support
+
+           1       0.81      0.89      0.85        28
+           2       0.89      0.80      0.84        30
+           3       0.60      0.43      0.50         7
+           5       0.71      1.00      0.83         5
+           6       0.75      0.75      0.75         4
+           7       0.92      0.92      0.92        12
+
+    accuracy                           0.83        86
+   macro avg       0.78      0.80      0.78        86
+weighted avg       0.83      0.83      0.82        86
+
+Taxa de acerto por classe:
+  Classe 1: 25/28 = 89.29%  (erros: 3)
+  Classe 2: 24/30 = 80.00%  (erros: 6)
+  Classe 3: 3/7 = 42.86%  (erros: 4)
+  Classe 5: 5/5 = 100.00%  (erros: 0)
+  Classe 6: 3/4 = 75.00%  (erros: 1)
+  Classe 7: 11/12 = 91.67%  (erros: 1)
+
+Classe com MAIS ERROS (em quantidade): 2 -> taxa de acerto 80.00%
+Classe com MENOR taxa de acerto: 3 -> 42.86%
+Matriz de confusão salva em matriz_confusao_melhor.png

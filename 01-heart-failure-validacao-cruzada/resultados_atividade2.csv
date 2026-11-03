@@ -1,0 +1,11 @@
+modelo,tipo,taxa_acerto_%,f1_infarto,f1_ponderado,precisao,revocacao,VP,FN,FP,VN,hiperparametros
+Random Forest,caixa-preta,85.95,0.7614,0.8558,0.8375,0.6979,67,29,13,190,"{'class_weight': None, 'max_depth': 4, 'n_estimators': 500}"
+Gradient Boosting,caixa-preta,84.28,0.7487,0.8417,0.7692,0.7292,70,26,21,182,"{'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 200}"
+AdaBoost,caixa-preta,83.95,0.7273,0.8352,0.8,0.6667,64,32,16,187,"{'learning_rate': 0.1, 'n_estimators': 200}"
+Arvore de Decisao,caixa-branca,82.27,0.7254,0.823,0.7216,0.7292,70,26,27,176,"{'criterion': 'entropy', 'max_depth': 3, 'min_samples_leaf': 10, 'min_samples_split': 2}"
+Bagging (Arvores),caixa-preta,82.61,0.7204,0.8245,0.7444,0.6979,67,29,23,180,"{'max_samples': 0.5, 'n_estimators': 200}"
+SVM,caixa-preta,80.27,0.7204,0.8067,0.6609,0.7917,76,20,39,164,"{'clf__C': 0.1, 'clf__class_weight': 'balanced', 'clf__gamma': 0.01, 'clf__kernel': 'rbf'}"
+MLP,caixa-preta,80.94,0.7016,0.8091,0.7053,0.6979,67,29,28,175,"{'clf__activation': 'relu', 'clf__alpha': 0.1, 'clf__hidden_layer_sizes': (16, 8)}"
+Voting (RF+SVM+KNN),caixa-preta,81.94,0.6786,0.8115,0.7917,0.5938,57,39,15,188,{'voting': 'hard'}
+Naive Bayes,caixa-branca,79.93,0.6203,0.7855,0.7903,0.5104,49,47,13,190,{'var_smoothing': 1e-09}
+KNN,caixa-preta,74.58,0.5366,0.7323,0.6471,0.4583,44,52,24,179,"{'clf__n_neighbors': 3, 'clf__p': 1, 'clf__weights': 'uniform'}"

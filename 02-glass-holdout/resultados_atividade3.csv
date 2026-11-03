@@ -1,0 +1,12 @@
+grupo,classificador,taxa_acerto_%,hiperparametros
+Monolitico,Arvore de Decisao,61.63,"{'criterion': 'gini', 'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 2}"
+Monolitico,KNN,82.56,"{'clf__n_neighbors': 1, 'clf__p': 1}"
+Monolitico,KNN weighted,75.58,"{'clf__n_neighbors': 5, 'clf__p': 1}"
+Monolitico,Naive Bayes,51.16,{'var_smoothing': 0.001}
+Monolitico,MLP,69.77,"{'clf__activation': 'tanh', 'clf__alpha': 0.01, 'clf__hidden_layer_sizes': (16,)}"
+Monolitico,SVM,63.95,"{'clf__C': 1000, 'clf__gamma': 0.01, 'clf__kernel': 'rbf'}"
+Ensemble,Ensemble heterogeneo com voto majoritario (DT+KNNw+SVM+MLP),72.09,membros = melhores monoliticos; voting=hard
+Ensemble,Ensemble heterogeneo com soma de probabilidades soft (DT+KNNw+SVM+MLP),79.07,membros = melhores monoliticos; voting=soft
+Ensemble,Bagging (Arvores),81.4,"{'max_samples': 1.0, 'n_estimators': 100}"
+Ensemble,AdaBoost (Arvores),79.07,"{'learning_rate': 0.5, 'n_estimators': 50}"
+Ensemble,Random Forest,80.23,"{'max_depth': None, 'max_features': 'sqrt', 'n_estimators': 500}"

@@ -1,0 +1,165 @@
+==============================================================================
+BASE DE DADOS: heart_failure_clinical_records_dataset.csv
+==============================================================================
+Número de instâncias ............: 299
+Número de atributos de entrada ..: 12
+Atributos: ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 'ejection_fraction', 'high_blood_pressure', 'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time']
+Classe 0 (normal ): 203 exemplos (67.9%)
+Classe 1 (infarto): 96 exemplos (32.1%)
+
+------------------------------------------------------------------------------
+Modelo: Arvore de Decisao
+Melhores hiperparâmetros: {'criterion': 'entropy', 'max_depth': 3, 'min_samples_leaf': 10, 'min_samples_split': 2}
+Taxa de acerto = 82.27%  |  F1(infarto) = 0.7254  |  F1 ponderado = 0.8230  |  Precisao = 0.7216  |  Revocacao = 0.7292
+Matriz de confusao [linhas = real, colunas = predito] ordem [infarto, normal]:
+[[ 70  26]
+ [ 27 176]]
+
+------------------------------------------------------------------------------
+Modelo: Naive Bayes
+Melhores hiperparâmetros: {'var_smoothing': 1e-09}
+Taxa de acerto = 79.93%  |  F1(infarto) = 0.6203  |  F1 ponderado = 0.7855  |  Precisao = 0.7903  |  Revocacao = 0.5104
+Matriz de confusao [linhas = real, colunas = predito] ordem [infarto, normal]:
+[[ 49  47]
+ [ 13 190]]
+
+------------------------------------------------------------------------------
+Modelo: KNN
+Melhores hiperparâmetros: {'clf__n_neighbors': 3, 'clf__p': 1, 'clf__weights': 'uniform'}
+Taxa de acerto = 74.58%  |  F1(infarto) = 0.5366  |  F1 ponderado = 0.7323  |  Precisao = 0.6471  |  Revocacao = 0.4583
+Matriz de confusao [linhas = real, colunas = predito] ordem [infarto, normal]:
+[[ 44  52]
+ [ 24 179]]
+
+------------------------------------------------------------------------------
+Modelo: SVM
+Melhores hiperparâmetros: {'clf__C': 0.1, 'clf__class_weight': 'balanced', 'clf__gamma': 0.01, 'clf__kernel': 'rbf'}
+Taxa de acerto = 80.27%  |  F1(infarto) = 0.7204  |  F1 ponderado = 0.8067  |  Precisao = 0.6609  |  Revocacao = 0.7917
+Matriz de confusao [linhas = real, colunas = predito] ordem [infarto, normal]:
+[[ 76  20]
+ [ 39 164]]
+
+------------------------------------------------------------------------------
+Modelo: MLP
+Melhores hiperparâmetros: {'clf__activation': 'relu', 'clf__alpha': 0.1, 'clf__hidden_layer_sizes': (16, 8)}
+Taxa de acerto = 80.94%  |  F1(infarto) = 0.7016  |  F1 ponderado = 0.8091  |  Precisao = 0.7053  |  Revocacao = 0.6979
+Matriz de confusao [linhas = real, colunas = predito] ordem [infarto, normal]:
+[[ 67  29]
+ [ 28 175]]
+
+------------------------------------------------------------------------------
+Modelo: Random Forest
+Melhores hiperparâmetros: {'class_weight': None, 'max_depth': 4, 'n_estimators': 500}
+Taxa de acerto = 85.95%  |  F1(infarto) = 0.7614  |  F1 ponderado = 0.8558  |  Precisao = 0.8375  |  Revocacao = 0.6979
+Matriz de confusao [linhas = real, colunas = predito] ordem [infarto, normal]:
+[[ 67  29]
+ [ 13 190]]
+
+------------------------------------------------------------------------------
+Modelo: AdaBoost
+Melhores hiperparâmetros: {'learning_rate': 0.1, 'n_estimators': 200}
+Taxa de acerto = 83.95%  |  F1(infarto) = 0.7273  |  F1 ponderado = 0.8352  |  Precisao = 0.8000  |  Revocacao = 0.6667
+Matriz de confusao [linhas = real, colunas = predito] ordem [infarto, normal]:
+[[ 64  32]
+ [ 16 187]]
+
+------------------------------------------------------------------------------
+Modelo: Bagging (Arvores)
+Melhores hiperparâmetros: {'max_samples': 0.5, 'n_estimators': 200}
+Taxa de acerto = 82.61%  |  F1(infarto) = 0.7204  |  F1 ponderado = 0.8245  |  Precisao = 0.7444  |  Revocacao = 0.6979
+Matriz de confusao [linhas = real, colunas = predito] ordem [infarto, normal]:
+[[ 67  29]
+ [ 23 180]]
+
+------------------------------------------------------------------------------
+Modelo: Gradient Boosting
+Melhores hiperparâmetros: {'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 200}
+Taxa de acerto = 84.28%  |  F1(infarto) = 0.7487  |  F1 ponderado = 0.8417  |  Precisao = 0.7692  |  Revocacao = 0.7292
+Matriz de confusao [linhas = real, colunas = predito] ordem [infarto, normal]:
+[[ 70  26]
+ [ 21 182]]
+
+------------------------------------------------------------------------------
+Modelo: Voting (RF+SVM+KNN)
+Melhores hiperparâmetros: {'voting': 'hard'}
+Taxa de acerto = 81.94%  |  F1(infarto) = 0.6786  |  F1 ponderado = 0.8115  |  Precisao = 0.7917  |  Revocacao = 0.5938
+Matriz de confusao [linhas = real, colunas = predito] ordem [infarto, normal]:
+[[ 57  39]
+ [ 15 188]]
+
+==============================================================================
+RESUMO (ordenado por F1 da classe infarto)
+==============================================================================
+             modelo         tipo  taxa_acerto_%  f1_infarto  precisao  revocacao
+      Random Forest  caixa-preta          85.95      0.7614    0.8375     0.6979
+  Gradient Boosting  caixa-preta          84.28      0.7487    0.7692     0.7292
+           AdaBoost  caixa-preta          83.95      0.7273    0.8000     0.6667
+  Arvore de Decisao caixa-branca          82.27      0.7254    0.7216     0.7292
+  Bagging (Arvores)  caixa-preta          82.61      0.7204    0.7444     0.6979
+                SVM  caixa-preta          80.27      0.7204    0.6609     0.7917
+                MLP  caixa-preta          80.94      0.7016    0.7053     0.6979
+Voting (RF+SVM+KNN)  caixa-preta          81.94      0.6786    0.7917     0.5938
+        Naive Bayes caixa-branca          79.93      0.6203    0.7903     0.5104
+                KNN  caixa-preta          74.58      0.5366    0.6471     0.4583
+
+==============================================================================
+MELHOR MODELO CAIXA-PRETA: Random Forest
+Hiperparâmetros: {'class_weight': None, 'max_depth': 4, 'n_estimators': 500}
+Taxa de acerto = 85.95%   F1 = 0.7614
+VP = 67  FP = 13  VN = 190  FN = 29
+Taxa de VP (sensibilidade/recall)  = VP/(VP+FN) = 0.6979
+Taxa de FP                          = FP/(FP+VN) = 0.0640
+Taxa de VN (especificidade)         = VN/(VN+FP) = 0.9360
+Taxa de FN                          = FN/(FN+VP) = 0.3021
+Taxa de acerto por classe: infarto = 69.79%   normal = 93.60%
+              precision    recall  f1-score   support
+
+  normal (0)       0.87      0.94      0.90       203
+ infarto (1)       0.84      0.70      0.76        96
+
+    accuracy                           0.86       299
+   macro avg       0.85      0.82      0.83       299
+weighted avg       0.86      0.86      0.86       299
+
+Matriz de confusão salva em matriz_confusao_random_forest.png
+
+==============================================================================
+MELHOR MODELO CAIXA-BRANCA: Arvore de Decisao
+Hiperparâmetros: {'criterion': 'entropy', 'max_depth': 3, 'min_samples_leaf': 10, 'min_samples_split': 2}
+Taxa de acerto = 82.27%   F1 = 0.7254
+VP = 70  FP = 27  VN = 176  FN = 26
+Taxa de VP (sensibilidade/recall)  = VP/(VP+FN) = 0.7292
+Taxa de FP                          = FP/(FP+VN) = 0.1330
+Taxa de VN (especificidade)         = VN/(VN+FP) = 0.8670
+Taxa de FN                          = FN/(FN+VP) = 0.2708
+Taxa de acerto por classe: infarto = 72.92%   normal = 86.70%
+              precision    recall  f1-score   support
+
+  normal (0)       0.87      0.87      0.87       203
+ infarto (1)       0.72      0.73      0.73        96
+
+    accuracy                           0.82       299
+   macro avg       0.80      0.80      0.80       299
+weighted avg       0.82      0.82      0.82       299
+
+Matriz de confusão salva em matriz_confusao_arvore_de_decisao.png
+
+==============================================================================
+IMPORTÂNCIA DOS ATRIBUTOS (Árvore de Decisão treinada na base completa)
+==============================================================================
+time                        0.6601
+serum_creatinine            0.1681
+ejection_fraction           0.0873
+serum_sodium                0.0844
+diabetes                    0.0000
+creatinine_phosphokinase    0.0000
+anaemia                     0.0000
+age                         0.0000
+platelets                   0.0000
+high_blood_pressure         0.0000
+sex                         0.0000
+smoking                     0.0000
+
+Atributo mais importante: time  (importância = 0.6601)
+Atributo da raiz da árvore: time  (limiar = 73.50)
+Gráfico salvo em importancia_atributos_arvore.png
